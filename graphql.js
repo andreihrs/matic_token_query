@@ -12,12 +12,6 @@ const NODE_URL = "https://matic-mainnet-full-rpc.bwarelabs.com";
 const provider = new Web3.providers.HttpProvider(NODE_URL);
 const web3 = new Web3(provider);
 
-const APIURL_QUICK =
-  "https://api.thegraph.com/subgraphs/name/sameepsi/quickswap";
-const APIURL_SUSHI =
-  "https://api.thegraph.com/subgraphs/name/sushiswap/matic-exchange";
-const APIURL_DFYN = "https://api.thegraph.com/subgraphs/name/ss-sonic/dfyn-v5";
-
 const pairsQuery_quick = `
   query($blockNumber: Int!) {
     pairs(first: 100, orderBy: createdAtTimestamp, orderDirection: desc,
@@ -104,6 +98,10 @@ const queryDEX = (apiUrl, exchange, pairQuery) => {
   });
 };
 
-queryDEX(APIURL_SUSHI, "sushi", pairsQuery_sushi);
-queryDEX(APIURL_QUICK, "quick", pairsQuery_quick);
-queryDEX(APIURL_DFYN, "dfyn", pairsQuery_quick);
+// queryDEX(APIURL_SUSHI, "sushi", pairsQuery_sushi);
+// queryDEX(APIURL_QUICK, "quick", pairsQuery_quick);
+// queryDEX(APIURL_DFYN, "dfyn", pairsQuery_quick);
+
+module.exports.queryDEX = queryDEX;
+module.exports.pairsQuery_quick = pairsQuery_sushi;
+module.exports.pairsQuery_sushi = pairsQuery_sushi;
